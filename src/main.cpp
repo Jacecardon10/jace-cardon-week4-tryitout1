@@ -6,6 +6,14 @@ using namespace std;
 // Function Prototypes
 int getMenuChoice();
 
+void displayBalance(double balance);
+
+void depositByValue(double balance, double amount);
+
+void depositByReference(double& balance, double amount);
+
+bool withdrawByReference(double& balance, double amount);
+
 
 // Driver 
 // ** DO NOT MODIFY **
@@ -100,4 +108,31 @@ int getMenuChoice()
     cin >> choice;
 
     return choice;
+}
+
+void displayBalance(double balance)
+{
+    cout << "Current balance: $" << balance << endl;
+}
+
+void depositByValue(double balance, double amount)
+{
+    balance += amount;
+    cout << "Deposited $" << amount << " (by value). New balance inside function: $" << balance << endl;
+}
+
+void depositByReference(double& balance, double amount)
+{
+    balance += amount;
+    cout << "Deposited $" << amount << " (by reference). New balance inside function: $" << balance << endl;
+}
+
+bool withdrawByReference(double& balance, double amount)
+{
+    if (amount > balance)
+    {
+        return false; // Insufficient funds
+    }
+    else balance -= amount;
+    return true; // Withdrawal successful
 }
